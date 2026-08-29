@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Archie-2026-AI</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .chat {
+      width: 90%;
+      max-width: 600px;
+      height: 80vh;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .header {
+      padding: 20px;
+      background: #222;
+      color: white;
+      text-align: center;
+    }
+
+    .header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .header p {
+      margin: 6px 0 0;
+      opacity: 0.8;
+    }
+
+    #messages {
+      flex: 1;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    .message {
+      margin-bottom: 15px;
+      padding: 12px 15px;
+      border-radius: 15px;
+      max-width: 80%;
+      line-height: 1.4;
+    }
+
+    .archie {
+      background: #eeeeee;
+      margin-right: auto;
+    }
+
+    .user {
+      background: #222;
+      color: white;
+      margin-left: auto;
+    }
+
+    .input-area {
+      display: flex;
+      padding: 15px;
+      border-top: 1px solid #ddd;
+      gap: 10px;
+    }
+
+    #userInput {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 12px;
+      font-size: 16px;
+      outline: none;
+    }
+
+    button {
+      padding: 12px 18px;
+      border: none;
+      border-radius: 12px;
+      background: #222;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      opacity: 0.85;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="chat">
+
+    <div class="header">
+      <h1>Archie-2026-AI</h1>
+      <p>Samimi, mutlu, bilgili ve akıllı AI asistanı</p>
+    </div>
+
+    <div id="messages">
+      <div class="message archie">
+        Merhaba! 👋 Ben Archie. Sana nasıl yardımcı olabilirim?
+      </div>
+    </div>
+
+    <div class="input-area">
+      <input
+        id="userInput"
+        type="text"
+        placeholder="Archie'ye bir şey yaz..."
+        onkeydown="if(event.key === 'Enter') sendMessage()"
+      >
+
+      <button onclick="sendMessage()">Gönder</button>
+    </div>
+
+  </div>
+
+  <script>
+    function sendMessage() {
+      const input = document.getElementById("userInput");
+      const messages = document.getElementById("messages");
+      const text = input.value.trim();
+
+      if (text === "") return;
+
+      const userMessage = document.createElement("div");
+      userMessage.className = "message user";
+      userMessage.textContent = text;
+      messages.appendChild(userMessage);
+
+      input.value = "";
+
+      const archieMessage = document.createElement("div");
+      archieMessage.className = "message archie";
+      archieMessage.textContent =
+        "Mesajını aldım! 🤖 Gerçek yapay zekâ bağlantısını bir sonraki aşamada ekleyeceğiz.";
+
+      messages.appendChild(archieMessage);
+
+      messages.scrollTop = messages.scrollHeight;
+    }
+  </script>
+
+</body>
+</html>
